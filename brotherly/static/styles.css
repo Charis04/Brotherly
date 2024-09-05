@@ -1,0 +1,83 @@
+body {
+    font-family: STIX Two Text;
+    background-color: #FBF9EF;
+    color: #1E2203;
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+}
+
+.general-content {
+    margin-left: 90px;
+}
+
+p, div h2, span{
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.general-button {
+    cursor: pointer;
+    padding: 10px;
+    font-weight: 1000;
+    border-style: solid;
+    border-radius: 20px;
+    border-width: 1px;
+    height: 40px;
+    min-width: 100px;
+    background-color: #658352;
+    color: #E9E7DE;
+    border-color: #658352;
+    font-size: 16px;
+    color: white;
+    font-family: STIX Two Text;
+    line-height: normal;
+}
+
+footer {
+    display: flex;
+    position: relative;   
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: gray;
+    justify-content: center;
+    padding: 20px;
+}
+
+header, footer {
+    background-color: #C9B9A2;
+}
+
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px;
+    gap: 24px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.welcome-title {
+    display: block;
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.message {
+    font-size: 21px;
+    font-family: Noto Sans;
+}
+
+.welcome-buttons {
+    display: flex;
+    gap: 20px;
+}

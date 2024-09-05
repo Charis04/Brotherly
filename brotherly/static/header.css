@@ -1,0 +1,42 @@
+header {
+    display: flex;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    padding: 20px;
+    height: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
+    border: none;
+}
+
+.left-header {
+    display: flex;
+    flex-direction: row;
+    margin-left: 0;
+    margin-right: auto;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.header-link {
+    font-size: 20px;
+    color: white;
+    font-family: STIX Two Text;
+}
+
+.right-header {
+    margin-left: auto;
+    margin-right: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.right-header button {
+    
+}

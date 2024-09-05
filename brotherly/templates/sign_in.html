@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="main">
+  <!-- Sign in form -->
+  <section class="sign-in">
+    <div class="container">
+      <div class="signin-content">
+        <div class="signin-image">
+          <figure><img src="{{ url_for('static', filename='images/signin-image.jpg') }}" alt="sing up image"></figure>
+          <a href="{{ url_for('register') }}" class="signup-image-link">Create an account</a>
+        </div>
+
+        <div class="signin-form">
+          <h2 class="form-title">Sign In</h2>
+          <form method="POST" class="register-form" id="login-form" action="">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+              <label for="email"><i class="zmdi zmdi-email"><img src="{{ url_for('static', filename='images/email-icon.png') }}" class="icon"></i></label>
+              {{ form.email(type="email", id="email", placeholder="Your Email") }}
+            </div>
+            <div class="form-group">
+              <label for="pass"><i class="zmdi zmdi-lock"></i><img src="{{ url_for('static', filename='images/password-icon.png') }}" class="icon"></label>
+              {{ form.password(type="password", id="pass", placeholder="Password") }}
+            </div>
+            <div class="form-group">
+              {{ form.remember(class="agree-term", type="checkbox", id="remember-me") }}
+              {{ form.remember.label(class="label-agree-term", for="remember-me") }}
+            </div>
+            <div class="form-group form-button">
+              {{ form.submit(type="submit", id="signin", class="form-submit", value="Sign in") }}
+            </div>
+        </form>
+        <div class="social-login">
+            <span class="social-label">Or login with</span>
+            <ul class="socials">
+              <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+              <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+              <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
