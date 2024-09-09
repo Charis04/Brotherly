@@ -1,8 +1,8 @@
-from flask import render_template, url_for, flash, redirect, request #, abort
+from flask import render_template, url_for, flash, redirect, request, abort
 from brotherly import app, db, bcrypt
-from brotherly.forms import ResgistrationForm, LoginForm
-from brotherly.models import User
-from flask_login import login_user, current_user, logout_user #, login_required
+from brotherly.forms import ResgistrationForm, LoginForm, ContactForm
+from brotherly.models import User, Contacts
+from flask_login import login_user, current_user, logout_user , login_required
 """
 import os
 from PIL import Image
@@ -57,14 +57,32 @@ def sign_in():
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
             flash(f'You have been logged in!', 'success')
-            return redirect(next_page) if next_page else redirect(url_for('home'))
+            return redirect(next_page) if next_page else redirect(url_for('contacts'))
         else:
             flash("Login unsuccessful! Please check email or password", 'danger')
     return render_template('sign_in.html', title='Sign In', form=form)
 
 @app.route("/contacts", strict_slashes=False)
+@login_required
 def contacts():
-    return render_template('contacts.html', title='Contacts')
+    contacts = Contacts.query.filter_by(user_id=current_user.id).all()
+    return render_template('contacts.html', title='Contacts', contacts=contacts)
+
+@app.route("/add_contact", methods=['GET', 'POST'], strict_slashes=False)
+@login_required
+def add_contact():
+    form = ContactForm()
+    if form.validate_on_submit():
+        contact = Contacts(
+            first_name=form.first_name.data, last_name=form.last_name.data,
+            phone=form.phone.data, birthday=form.birthday.data,
+            interests=form.interests.data, user=current_user
+        )
+        db.session.add(contact)
+        db.session.commit()
+        return redirect(url_for('contacts'))
+    return render_template('add_contact.html', title='Add Contact', form=form)
+
 
 @app.route("/sign_out")
 def sign_out():

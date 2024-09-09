@@ -14,10 +14,10 @@
     <title>Brotherly</title>
   {% endif %}
 </head>
-<body>
+<body class="body">
   <header class="">
     <div class="left-header">
-      <a href="{{ url_for('home') }}"><h1>Brotherly</h1></a>
+    
       <a href="{{ url_for('home') }}"><div><p class="header-link">Home</p></div></a>
       <div><p class="header-link">About Us</p></div>
       <div><p class="header-link">Features</p></div>
@@ -35,24 +35,24 @@
   <div class="side-bar">
     <a href="{{ url_for('contacts') }}">
       <div class="sidebar-icon">
-        <img class="home" src="">
+        <img class="home" src="{{ url_for('static', filename='images/contacts-icon.png') }}">
         <p>Contacts</p>
       </div>
     </a>
     <div class="sidebar-icon">
-      <img class="explore" src="">
+      <img class="explore" src="{{ url_for('static', filename='images/contacts-icon.png') }}">
       <p>Reminders</p>
     </div>
     <div class="sidebar-icon">
-      <img class="subscriptions" src="">
+      <img class="subscriptions" src="{{ url_for('static', filename='images/suggestion-icon.png') }}">
       <p>Suggestions</p>
     </div>
     <div class="sidebar-icon">
-      <img class="originals" src="">
-      <p>Setting</p>
+      <img class="originals" src="{{ url_for('static', filename='images/settings-icon.png') }}">
+      <p>Settings</p>
     </div>
     <div class="sidebar-icon">
-      <img class="youtube-music" src="">
+      <img class="youtube-music" src="{{ url_for('static', filename='images/logout-icon.png') }}">
       <p>Logout</p>
     </div>
   </div>
@@ -60,8 +60,8 @@
     {% block content %}    
     {% endblock %}
   </div>
-  <footer>
+  <!--<footer class="foot">
     <p> 2024 Brotherly</p>
-  </footer>
+  </footer>-->
 </body>
 </html>

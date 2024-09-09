@@ -26,11 +26,10 @@ class Contacts(db.Model):
     first_name = db.Column(db.String(20), nullable=False)
     last_name = db.Column(db.String(20), nullable=False)
     phone = db.Column(db.String(20), unique=True)
-    email = db.Column(db.String(60), unique=True)
     birthday = db.Column(db.DateTime)
     interests = db.Column(db.Text)
     image_file = db.Column(db.String(20), nullable=False,  default='default.jpg')
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False, )
 
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+        return f"Contact('{self.first_name}', '{self.last_name}', '{self.image_file}')"

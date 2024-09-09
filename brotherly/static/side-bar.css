@@ -1,11 +1,11 @@
 .side-bar {
   position: fixed;
-  background-color: #C9B9A2;
   top: 0;
   left: 0;
   bottom: 0;
   width: 90px;
-  z-index: 20;
+  z-index: 10;
+  padding-top: 80px;
 }
 
 .sidebar-icon {
@@ -18,14 +18,20 @@
   cursor: pointer;
 }
 .sidebar-icon:hover {
-  background-color: rgb(230, 230, 230);
+  background-color: #658352;;
 }
 
 .side-bar img {
   height: 24px;
+  color: green;
 }
 
 .sidebar-icon p {
   margin-top: 10px;
-  font-size: 12px;
+  font-size: 14px;
+  color: white;
+}
+
+.side-bar a {
+  text-decoration: none;
 }

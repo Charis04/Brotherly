@@ -1,4 +1,5 @@
-body {
+
+.body {
     font-family: STIX Two Text;
     background-color: #FBF9EF;
     color: #1E2203;
@@ -40,19 +41,21 @@ a {
     line-height: normal;
 }
 
-footer {
+.foot {
     display: flex;
-    position: relative;   
-    bottom: 0;
+    position: absolute;
     left: 0;
     right: 0;
-    background-color: gray;
     justify-content: center;
     padding: 20px;
+    align-items: center;
+}
+.foot p {
+    margin: 0;
 }
 
-header, footer {
-    background-color: #C9B9A2;
+header, footer, .side-bar {
+    background-color: #E8C87E;
 }
 
 .welcome-container {

@@ -6,27 +6,34 @@ header {
     right: 0;
     color: white;
     padding: 20px;
-    height: 50px;
     margin-top: 0;
     margin-bottom: 0;
     border: none;
+    z-index: 20;
 }
 
 .left-header {
     display: flex;
     flex-direction: row;
-    margin-left: 0;
+    margin-left: 40px;
     margin-right: auto;
     align-items: center;
     text-align: center;
     justify-content: flex-start;
     gap: 20px;
 }
+.left-header a {
+    text-decoration: none;
+}
 
 .header-link {
     font-size: 20px;
     color: white;
     font-family: STIX Two Text;
+    text-decoration: none;
+    margin: 0;
+    height: 30px;
+    line-height: 1.0;
 }
 
 .right-header {
