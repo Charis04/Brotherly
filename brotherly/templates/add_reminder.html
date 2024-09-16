@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='add_contact.css') }}">
+  <!-- Sign in form -->
+  <section class="contact-info">
+    <div class="container">
+      <div class="contact-form-content">
+        <div class="signin-form">
+          <h2 class="form-title">Reminder Info</h2>
+          <form class="form-class" method="POST" class="register-form" id="login-form" action="">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+              <label for="fname"><i class="zmdi zmdi-account material-icons-name"><img src="{{ url_for('static', filename='images/person-icon.png') }}" class="icon"></i></label>
+              {{ form.contact(class='form-input', type="name", id="fname", placeholder="Contact's name") }}
+              {% if form.contact.errors %}
+                <div class="invalid-feedback">
+                  {% for error in form.contact.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label for="due_date"><i class="zmdi zmdi-email"></i><img src="{{ url_for('static', filename='images/calendar-icon.png') }}" class="icon"></label>
+              {{ form.due_date(class='form-input', type="datetime-local", id="due_date", placeholder="Due date") }}
+              {% if form.due_date.errors %}
+                <div class="invalid-feedback">
+                  {% for error in form.due_date.errors %}
+                    <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            <div class="form-group"></div>
+              <label for="message"><i class="zmdi zmdi-account material-icons-name"><img src="{{ url_for('static', filename='images/person-icon.png') }}" class="icon"></i></label>
+              {{ form.message(class='form-input', type="text", id="message", placeholder="Reminder message") }}
+            </div>
+            <div class="form-group form-button">
+              {{ form.submit(type="submit", class="form-submit", value="Add") }}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

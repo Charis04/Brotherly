@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request, abort
 from brotherly import app, db, bcrypt
-from brotherly.forms import ResgistrationForm, LoginForm, ContactForm
-from brotherly.models import User, Contacts
+from brotherly.forms import ResgistrationForm, LoginForm, ContactForm, ReminderForm
+from brotherly.models import User, Contacts, Reminder
 from flask_login import login_user, current_user, logout_user , login_required
 """
 import os
@@ -82,6 +82,31 @@ def add_contact():
         db.session.commit()
         return redirect(url_for('contacts'))
     return render_template('add_contact.html', title='Add Contact', form=form)
+
+
+@app.route("/reminders", strict_slashes=False)
+@login_required
+def reminders():
+    # contacts = Contacts.query.filter_by(user_id=current_user.id).all()
+    return render_template('reminders.html', title='Reminders')
+
+
+@app.route('/add_reminder', methods=['GET', 'POST'], strict_slashes=False)
+@login_required
+def add_reminder():
+    form = ReminderForm()
+    
+    # Assuming you have a way to get the current user's contacts
+    user_contacts = Contacts.query.filter_by(user_id=current_user.id).all()
+    
+    # Populate form with contact choices (e.g., contact ID and name)
+    form.contact.choices = [(contact.id, contact.first_name+''+contact.last_name) for contact in user_contacts]
+    
+    if form.validate_on_submit():
+        # Handle the form submission and save the reminder
+        pass
+    
+    return render_template('add_reminder.html', title='Add Reminder', form=form)
 
 
 @app.route("/sign_out")

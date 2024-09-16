@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='side-bar.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='contacts.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='reminders.css') }}">
   {% if title %}
     <title>{{ title }}</title>
   {% else %}
@@ -15,7 +16,7 @@
   {% endif %}
 </head>
 <body class="body">
-  <header class="">
+  <header class="header">
     <div class="left-header">
     
       <a href="{{ url_for('home') }}"><div><p class="header-link">Home</p></div></a>
@@ -32,30 +33,32 @@
       {% endif %}
     </div>
   </header>
-  <div class="side-bar">
-    <a href="{{ url_for('contacts') }}">
+  {% if current_user.is_authenticated %}
+    <div class="side-bar">
+      <a href="{{ url_for('contacts') }}">
+        <div class="sidebar-icon">
+          <img class="home" src="{{ url_for('static', filename='images/contacts-icon.png') }}">
+          <p>Contacts</p>
+        </div>
+      </a>
       <div class="sidebar-icon">
-        <img class="home" src="{{ url_for('static', filename='images/contacts-icon.png') }}">
-        <p>Contacts</p>
+        <img class="explore" src="{{ url_for('static', filename='images/contacts-icon.png') }}">
+        <p>Reminders</p>
       </div>
-    </a>
-    <div class="sidebar-icon">
-      <img class="explore" src="{{ url_for('static', filename='images/contacts-icon.png') }}">
-      <p>Reminders</p>
+      <div class="sidebar-icon">
+        <img class="subscriptions" src="{{ url_for('static', filename='images/suggestion-icon.png') }}">
+        <p>Suggestions</p>
+      </div>
+      <div class="sidebar-icon">
+        <img class="originals" src="{{ url_for('static', filename='images/settings-icon.png') }}">
+        <p>Settings</p>
+      </div>
+      <div class="sidebar-icon">
+        <img class="youtube-music" src="{{ url_for('static', filename='images/logout-icon.png') }}">
+        <p>Logout</p>
+      </div>
     </div>
-    <div class="sidebar-icon">
-      <img class="subscriptions" src="{{ url_for('static', filename='images/suggestion-icon.png') }}">
-      <p>Suggestions</p>
-    </div>
-    <div class="sidebar-icon">
-      <img class="originals" src="{{ url_for('static', filename='images/settings-icon.png') }}">
-      <p>Settings</p>
-    </div>
-    <div class="sidebar-icon">
-      <img class="youtube-music" src="{{ url_for('static', filename='images/logout-icon.png') }}">
-      <p>Logout</p>
-    </div>
-  </div>
+  {% endif %}
   <div class="general-content">
     {% block content %}    
     {% endblock %}

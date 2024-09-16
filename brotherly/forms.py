@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, DateField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, DateField, SelectField, DateTimeField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from brotherly.models import User
 """
@@ -48,6 +48,22 @@ class ContactForm(FlaskForm):
     phone = StringField('Phone')
     birthday = DateField('Birthday', format='%Y-%m-%d')
     interests = TextAreaField('Interests')
+    submit = SubmitField('Add')
+
+
+class ReminderForm(FlaskForm):
+    due_date = DateTimeField(
+        'Due date and time', 
+        format='%Y-%m-%d %H:%M',  # Date and time format (24-hour format)
+        validators=[DataRequired()]
+    )
+    frequency = SelectField(
+        'Frequency',
+        choices=[('one-off', 'One-Off'), ('daily', 'Daily'), ('weekly', 'Weekly'), ('monthly', 'Monthly')],
+        validators=[DataRequired()]
+    )
+    message = TextAreaField('Reminder message')
+    contact = SelectField('Contact', validators=[DataRequired()])
     submit = SubmitField('Add')
 
 
